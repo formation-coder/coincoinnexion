@@ -17,7 +17,7 @@ Ce qui serait souhaitable :
      - [ ] saisie du pseudo, mail, mot de passe et confirmation du mot de passe
    - [ ] Formulaire de login : laisser à l'utilisateur la possibilité de se connecter soit avec son pseudo, soit son email
  - Back 
-   - [ ] Ajout d'une base de données pour l'enregistrement des utilisateur
+   - [ ] Ajout d'une base de données pour l'enregistrement des utilisateurs
    - [ ] Traitement du formulaire d'inscription
      - [ ] Vérification des mots de passe donnés dans le formulaire
      - [ ] Vérification de la disponibilité du pseudo (on regarde que l'utilisateur ne soit pas déjà enregistré)
@@ -38,7 +38,17 @@ S'assurer d'avoir la dernière version du projet (en utilisant les commandes git
 
 Pensez à sauver toute cette procédure dans un script sql dans le dossier `backend`. 
 
+Pour utiliser un script dans mysql, il suffit de se connecter avec un utilisateur qui a pleins de droits (`root` par exemple), 
+et d'utiliser la commande suivante dans mysql ! 
+```sql
+source monfichier.sql
+```
+
 
 ## Étape 3 : 
 
  - Décidons ensemble de ce qui est le mieux à faire. 
+
+### Le login, coté back.
+
+ - on ajoute la gestion de la base de données dans le fichier ??? 
