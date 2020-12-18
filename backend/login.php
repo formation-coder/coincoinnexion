@@ -5,8 +5,7 @@
     // Pour récupérer le hash qui est stocké, on va utiliser notre base de données : 
     
     // Construction de notre requête paramétrée 
-    $req = "SELECT password FROM utilisateurs WHERE pseudo = '$user'"; // :warning: ATTENTION ACHTUNG : ne pas faire comme ça, mais on verra après pourquoi
-
+    $req = "SELECT password FROM utilisateurs WHERE pseudo = :pseudo LIMIT 1"; // :pseudo est un paramètre de requête préparée 
    
     include("db.php");
     // Connexion à la BDD et envoi de la requête
@@ -17,9 +16,10 @@
     // Récupérer le mot de passe stocké en BD pour l'utilisateur qui essaye de se connecter. 
     try {
         $statement = $connexion->prepare($req);
-        $statement->execute([]);
-        $resultats = $statement->fetchAll(PDO::FETCH_ASSOC);
-        echo var_dump($resultats);
+        $statement->bindParam(':pseudo', $user);
+        $statement->execute();
+        $resultat = $statement->fetch(PDO::FETCH_ASSOC);
+        $hash = $resultat['password'];
     } catch(Exception $exception) {
         echo $exception->getMessage();
     }
